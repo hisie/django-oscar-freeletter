@@ -30,9 +30,13 @@ subscribers.
 
 ```
 uv add django-oscar-freeletter
-# and, if you want blog-post blocks too:
-uv add django-oscar-blog
+# or, with blog-post blocks too (pulls in django-oscar-blog):
+uv add "django-oscar-freeletter[blog]"
 ```
+
+Plain `pip` works the same way: `pip install django-oscar-freeletter[blog]`.
+Without the `blog` extra, this package still installs and works fine — it
+just registers the `"product"` block type only.
 
 ```python
 INSTALLED_APPS = [
