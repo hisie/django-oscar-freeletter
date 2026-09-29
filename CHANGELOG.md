@@ -21,5 +21,5 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   and a read-only subscriber list.
 - 14 tests, 95% coverage.
 
-[Unreleased]: https://github.com/hisie/django-oscar-freeletter/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/hisie/django-oscar-freeletter/releases/tag/v0.1.0
+[Unreleased]: https://github.com/hisie/django-oscar-freeletter/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/hisie/django-oscar-freeletter/releases/tag/0.1.0
