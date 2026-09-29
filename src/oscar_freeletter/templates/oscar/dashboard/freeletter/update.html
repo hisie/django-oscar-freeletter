@@ -1,0 +1,47 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% load i18n %}
+
+{% block body_class %}{{ block.super }} create-page freeletter{% endblock %}
+{% block title %}
+{{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:freeletter-issue-list' %}">{% trans "Newsletter issues" %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block headertext %}
+{{ title }}
+{% endblock %}
+
+{% block dashboard_content %}
+<div class="table-header">
+    <h2>{{ title }}</h2>
+</div>
+
+<form id="issue_update_form" method="post" class="card card-body form-stacked wysiwyg" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'oscar/dashboard/partials/form_fields.html' with form=form %}
+
+    <h3>{% trans "Blocks" %}</h3>
+    {{ block_formset.management_form }}
+    {% for block_form in block_formset %}
+        <fieldset class="card card-body mb-3">
+            {% if block_form.non_field_errors %}{{ block_form.non_field_errors }}{% endif %}
+            {% include 'oscar/dashboard/partials/form_fields.html' with form=block_form %}
+        </fieldset>
+    {% endfor %}
+
+    <div class="form-actions">
+        <button class="btn btn-primary" type="submit" data-loading-text="{% trans 'Saving...' %}">{% trans "Save" %}</button>
+        {% trans "or" %} <a href="{% url 'dashboard:freeletter-issue-list' %}">{% trans "cancel" %}</a>.
+    </div>
+</form>
+
+{% endblock dashboard_content %}

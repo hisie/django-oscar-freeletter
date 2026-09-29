@@ -1,0 +1,12 @@
+{% load image_tags %}
+{% if object %}
+<div class="freeletter-product-block">
+    <a href="{{ object.get_absolute_url }}">
+        {% with image=object.primary_image %}
+            {% oscar_thumbnail image.original "x155" upscale=False as thumb %}
+            <img src="{{ thumb.url }}" alt="{{ object.get_title }}">
+        {% endwith %}
+        <h3>{{ object.get_title }}</h3>
+    </a>
+</div>
+{% endif %}

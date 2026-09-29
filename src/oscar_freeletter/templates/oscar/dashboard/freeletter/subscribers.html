@@ -1,0 +1,56 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% load i18n %}
+
+{% block body_class %}{{ block.super }} freeletter{% endblock %}
+
+{% block title %}
+    {% trans "Subscribers" %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:freeletter-issue-list' %}">{% trans "Newsletter issues" %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans "Subscribers" %}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block header %}
+    <div class="page-header">
+        <h1>{% trans "Subscribers" %}</h1>
+    </div>
+{% endblock header %}
+
+{% block dashboard_content %}
+    {% if subscribers %}
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>{% trans "Email" %}</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Confirmed" %}</th>
+                    <th>{% trans "Subscribed at" %}</th>
+                    <th>{% trans "Unsubscribed at" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subscriber in subscribers %}
+                    <tr>
+                        <td>{{ subscriber.email }}</td>
+                        <td>{{ subscriber.name }}</td>
+                        <td>{{ subscriber.is_confirmed|yesno }}</td>
+                        <td>{{ subscriber.subscribed_at }}</td>
+                        <td>{{ subscriber.unsubscribed_at|default:"-" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "oscar/dashboard/partials/pagination.html" %}
+    {% else %}
+        <table class="table table-striped table-bordered table-hover">
+            <tr><td>{% trans "No subscribers yet." %}</td></tr>
+        </table>
+    {% endif %}
+{% endblock dashboard_content %}

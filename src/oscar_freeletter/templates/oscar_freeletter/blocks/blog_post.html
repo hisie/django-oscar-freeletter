@@ -1,0 +1,9 @@
+{% if object %}
+<div class="freeletter-blog-post-block">
+    <a href="{{ object.get_absolute_url }}">
+        {% if object.featured_image %}<img src="{{ object.featured_image.url }}" alt="{{ object.title }}">{% endif %}
+        <h3>{{ object.title }}</h3>
+    </a>
+    {% if object.excerpt %}<p>{{ object.excerpt }}</p>{% endif %}
+</div>
+{% endif %}
