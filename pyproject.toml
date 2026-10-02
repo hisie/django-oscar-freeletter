@@ -28,7 +28,7 @@ dependencies = [
 # actually installed (checked at runtime via apps.is_installed) — this
 # extra just documents/pulls the dependency, it isn't required to import
 # this package at all.
-blog = ["django-oscar-blog>=0.1.0,<1.0"]
+blog = ["django-oscar-blog>=0.4.0,<1.0"]
 
 [project.urls]
 Homepage = "https://github.com/hisie/django-oscar-freeletter"
@@ -45,8 +45,11 @@ dev = [
     "pytest-django",
     # Not a runtime dependency of this package (the "blog_post" block type
     # is registered conditionally, see apps.py) — only needed here so the
-    # test suite can actually exercise that code path.
-    "django-oscar-blog",
+    # test suite can actually exercise that code path. Floor matches the
+    # [blog] extra's own — an unpinned entry here let the lockfile drift
+    # to 0.2.0 once already (confirmed live: broke the suite with a
+    # missing-taggit-migration error), so it's pinned now too.
+    "django-oscar-blog>=0.4.0,<1.0",
     "django-stubs",
 ]
 

@@ -10,11 +10,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - Widened the `django-freeletter` dependency constraint from
-  `>=0.1.0,<0.2` to `>=0.1.0,<1.0`, and the `blog` extra's
-  `django-oscar-blog` constraint from `>=0.1.0,<0.3` to `>=0.1.0,<1.0`
-  — the old `<0.3` cap had actually gone stale and conflicted with
-  `django-oscar-blog`'s own 0.3.0 (tags) release; matches this project
-  family's wider version-pinning policy going forward.
+  `>=0.1.0,<0.2` to `>=0.1.0,<1.0` — matches this project family's wider
+  version-pinning policy going forward.
+- The `blog` extra's `django-oscar-blog` constraint (and the matching
+  dev-group entry, used to test the `blog_post` block type) is now
+  `>=0.4.0,<1.0`, not just a widened upper bound: the old `>=0.1.0` floor
+  let the lockfile drift all the way down to `0.2.0` — confirmed live,
+  this actually broke the test suite (`NodeNotFoundError` on
+  `oscar_blog`'s tags migration, since `taggit` only became a real
+  `oscar_blog` dependency at its own `0.3.0`). `0.4.0` is the version this
+  package is actually built and tested against.
 - Removed the now-stale `[tool.uv.sources]` local-path overrides for
   `django-freeletter` and `django-oscar-blog` — both genuinely published
   now, no longer need path dependencies for local development.
