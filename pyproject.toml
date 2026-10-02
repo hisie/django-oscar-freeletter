@@ -1,6 +1,6 @@
 [project]
 name = "django-oscar-freeletter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Wires django-freeletter into django-oscar: product and blog-post issue blocks, plus an Oscar dashboard section."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -20,7 +20,7 @@ classifiers = [
 dependencies = [
     "django>=5.2,<5.3",
     "django-oscar>=4.2,<4.3",
-    "django-freeletter>=0.1.0,<0.2",
+    "django-freeletter>=0.1.0,<1.0",
 ]
 
 [project.optional-dependencies]
@@ -28,7 +28,7 @@ dependencies = [
 # actually installed (checked at runtime via apps.is_installed) — this
 # extra just documents/pulls the dependency, it isn't required to import
 # this package at all.
-blog = ["django-oscar-blog>=0.1.0,<0.3"]
+blog = ["django-oscar-blog>=0.1.0,<1.0"]
 
 [project.urls]
 Homepage = "https://github.com/hisie/django-oscar-freeletter"
@@ -49,12 +49,6 @@ dev = [
     "django-oscar-blog",
     "django-stubs",
 ]
-
-[tool.uv.sources]
-# Neither is published yet — see each package's own repo. Swap these for
-# plain version constraints once they're on PyPI.
-django-freeletter = { path = "../django-freeletter", editable = true }
-django-oscar-blog = { path = "../django-oscar-blog", editable = true }
 
 [build-system]
 requires = ["hatchling"]

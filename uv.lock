@@ -266,27 +266,14 @@ wheels = [
 [[package]]
 name = "django-freeletter"
 version = "0.1.0"
-source = { editable = "../django-freeletter" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "pillow" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "django", specifier = ">=5.2,<5.3" },
-    { name = "pillow", specifier = ">=12.3.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "black" },
-    { name = "coverage" },
-    { name = "django-stubs" },
-    { name = "isort" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-django" },
+sdist = { url = "https://files.pythonhosted.org/packages/0a/b0/c614fd07d703eca5e785d05b3c06fa577890906175b40b29cd561053e47b/django_freeletter-0.1.0.tar.gz", hash = "sha256:cda436cee7beaca6bb5280b3f542bdc6f329423b84848958eaa8643847183240", size = 59396, upload-time = "2026-09-29T14:49:45.024Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/71/70/b7ef640e3b4f1eb01b5e239d057593eda2e8bb91d5a3e29c6775ff846980/django_freeletter-0.1.0-py3-none-any.whl", hash = "sha256:2f17296eef1a930ef78edf71702c3b40220d1af0bf434928286d910ce5796e43", size = 17148, upload-time = "2026-09-29T14:49:43.493Z" },
 ]
 
 [[package]]
@@ -325,32 +312,19 @@ wheels = [
 [[package]]
 name = "django-oscar-blog"
 version = "0.2.0"
-source = { editable = "../django-oscar-blog" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-oscar" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "django", specifier = ">=5.2,<5.3" },
-    { name = "django-oscar", specifier = ">=4.2,<4.3" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "black" },
-    { name = "coverage" },
-    { name = "django-stubs" },
-    { name = "isort" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-django" },
+sdist = { url = "https://files.pythonhosted.org/packages/67/60/eb401b025ed35441fcc444829151fa4e8ca81796877174467a7b279c8d5a/django_oscar_blog-0.2.0.tar.gz", hash = "sha256:6bfe9d3aa56e3aa5a4ec6f7589d26b67e5d3fd0ed04fc153d2148dcba6f16d78", size = 64758, upload-time = "2026-09-28T16:18:09.108Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/6e/fde0fe62908db78304feeb7781e77f23f20ce46e93d799a01ff9104aa2fb/django_oscar_blog-0.2.0-py3-none-any.whl", hash = "sha256:c423092748a4254965dcd5d96c661f021c692fe6e6658354d459ca3a1d188da0", size = 16561, upload-time = "2026-09-28T16:18:07.714Z" },
 ]
 
 [[package]]
 name = "django-oscar-freeletter"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
@@ -378,9 +352,9 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.2,<5.3" },
-    { name = "django-freeletter", editable = "../django-freeletter" },
+    { name = "django-freeletter", specifier = ">=0.1.0,<1.0" },
     { name = "django-oscar", specifier = ">=4.2,<4.3" },
-    { name = "django-oscar-blog", marker = "extra == 'blog'", editable = "../django-oscar-blog" },
+    { name = "django-oscar-blog", marker = "extra == 'blog'", specifier = ">=0.1.0,<1.0" },
 ]
 provides-extras = ["blog"]
 
@@ -388,7 +362,7 @@ provides-extras = ["blog"]
 dev = [
     { name = "black" },
     { name = "coverage" },
-    { name = "django-oscar-blog", editable = "../django-oscar-blog" },
+    { name = "django-oscar-blog" },
     { name = "django-stubs" },
     { name = "isort" },
     { name = "mypy" },
