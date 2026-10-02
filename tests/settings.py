@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "haystack",
     "treebeard",
     "django_tables2",
+    "taggit",
     # The packages under test.
     "freeletter",
     "oscar_blog.apps.OscarBlogConfig",
